@@ -102,9 +102,6 @@ public class User{
                     System.out.println(line);
                     userFound=true;
                 }
-                else{
-                    continue;
-                }
 
             }
             if(!userFound){
