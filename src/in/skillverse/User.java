@@ -1,5 +1,6 @@
 package in.skillverse;
 import java.io.*;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 
@@ -114,7 +115,67 @@ public class User{
         catch (Exception ex){
             System.out.println("Error From User::showAllUsers"+ex.getMessage());
         }
+    }
 
+    public void updateUser()
+    {
+        Scanner sc = new Scanner(System.in);
+        String[] Users=new String[1000];
+        int i=0;
+        int userId;
+        boolean userFound=false;
+        String line="";
+        try{
+            Reader r=new FileReader("users.csv");
+            BufferedReader filereader=new BufferedReader(r);
+
+//            Reads file and stores it in Strings Array
+
+            while((line=filereader.readLine())!=null){
+              Users[i]=line;
+            }
+//            Asking User for User Information
+            System.out.println("Enter the User ID");
+            userId=Integer.parseInt(sc.next());
+            for (int j = 0; j <Users.length ; j++) {
+                String user=Users[j];
+                StringTokenizer userDetails=new StringTokenizer(user,",");
+                int id=Integer.parseInt(userDetails.nextToken());
+                if(id==userId){
+                    try{
+                        String updatedUser="";
+                        InputStreamReader isr=new InputStreamReader(System.in);
+                        BufferedReader br=new BufferedReader(isr);
+                        System.out.println("Enter the User ID");
+                        updatedUser+=br.readLine()+",";
+                        System.out.println("Enter Name of the User");
+                        updatedUser+=br.readLine()+",";
+                        System.out.println("Enter Father Name");
+                        updatedUser+=br.readLine()+",";
+                        System.out.println("Enter email");
+                        updatedUser+=br.readLine()+",";
+                        System.out.println("Enter phone");
+                        updatedUser+=br.readLine()+",";
+                        System.out.println("Enter Address");
+                        updatedUser+=br.readLine()+"\n";
+                        Users[j]=updatedUser;
+                    }
+                    catch(Exception ex){
+                        System.out.println("Error From User::insert "+ex.getMessage());
+                    }
+                }
+                if(user==null)
+                    break;
+                System.out.println(user);
+            }
+
+
+
+
+        }
+        catch (Exception ex){
+            System.out.println("Error From User::showAllUsers"+ex.getMessage());
+        }
 
 
     }

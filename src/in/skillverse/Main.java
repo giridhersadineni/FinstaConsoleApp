@@ -18,6 +18,8 @@ public class Main {
                 System.out.println("1. Add User");
                 System.out.println("2. View all Users");
                 System.out.println("3. Search User");
+                System.out.println("6. Update User");
+
                 System.out.println("=================================");
                 System.out.println("Enter Choice");
                 op=Integer.parseInt(br.readLine());
@@ -39,6 +41,9 @@ public class Main {
                         break;
                     case 5:
                         accountController.showAllAccounts();
+                        break;
+                    case 6:
+                        userController.updateUser();
                         break;
 
 
